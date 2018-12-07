@@ -132,6 +132,23 @@ Poll and process mouse/keyboard actions from `sf::RenderWindow` object. Process 
 - **Dragging**
 
 ```C++
+void mouseHoveringAndPressingEvent();
+```
+This function processes the mouse position and action in order to change the state of  `UIButton` objects.
+```C++
+void buttonInput();
+```
+Processes if `sf::Event::MouseButtonReleased` event happened inside any buttons, and do actions like `append()`.
+```C++
+void draggingEvent(sf::Vector2i mouseVector);
+void zoomIn(sf::Vector2i instantMousePos);
+void zoomOut(sf::Vector2i instantMousePos);
+```
+Processes basic mouse operations. 
+- `draggingEvent(sf::Vector2i mouseVector)` gets instant mouse cursor position inside the `sf::RenderWindow window` and calculates the displacement in graph.
+-`zoomIn` and `zoomOut` can zoom the graph based on current mouse cursor position.
+
+```C++
 void refreshPlots();
 ```
 Call to `refreshPlots()` to update `vector<sf::Vector2f> coordinates[6]` values. 
@@ -141,6 +158,21 @@ Will recalculate every point coordinates based on the `xMin`, `xMax`.
 void updateGraphingParameters();
 ```
 Call to `updateGraphingParameters()` will automatically update all of the graphing parameters regarding the `xMin`, `xMax`, `yMin`, `yMax`.
+
+```C++
+void drawGrids();
+void createAndDrawAxis();
+```
+Create and draw grids and axises. </br>
+Grids are dynamically updated following the rule:
+Step Coefficient  |  Zoom In Threashold   |  Zoom Out Threashold
+------------ | ------------- | ---------------
+1  |  9.2  |  17
+2  |  9  |  16.5
+5  |  7  | 17.4
+
+X-Axis and Y-Axis are drew based on the `origin` position.
+
 ```C++
 bool trigNeedToMultiply (char c);
 ```
