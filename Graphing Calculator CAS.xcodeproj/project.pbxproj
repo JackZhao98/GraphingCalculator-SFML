@@ -84,6 +84,8 @@
 		EBF3590421A3C2E90081B4DA /* token.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = token.cpp; sourceTree = "<group>"; };
 		EBF3590521A3C2E90081B4DA /* variable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = variable.cpp; sourceTree = "<group>"; };
 		EBFABE9721B9AAF400D2C9A8 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		EBFABE9821BA058A00D2C9A8 /* Screen Shot 2018-12-06 at 17.32.37.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2018-12-06 at 17.32.37.png"; sourceTree = "<group>"; };
+		EBFABE9921BA058B00D2C9A8 /* Screen Shot 2018-12-06 at 17.31.52.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2018-12-06 at 17.31.52.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +196,8 @@
 		EBF3589D21A384A60081B4DA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				EBFABE9921BA058B00D2C9A8 /* Screen Shot 2018-12-06 at 17.31.52.png */,
+				EBFABE9821BA058A00D2C9A8 /* Screen Shot 2018-12-06 at 17.32.37.png */,
 				EBF3589C21A3848F0081B4DA /* SF-Light.otf */,
 			);
 			path = Resources;
