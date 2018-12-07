@@ -284,8 +284,8 @@ bool _isEnabled;    // is label enabled?
 
 # Preview
 
-![Screen Shot](GraphicCalculator-SFML/Resources/Screen Shot 2018-12-06 at 17.31.52.png)
-![Screen Shot](GraphicCalculator-SFML/Resources/Screen Shot 2018-12-06 at 17.32.37.png)
+![Screen Shot](https://github.com/JackZhao98/GraphicCalculator-SFML/blob/master/Resources/Screen%20Shot%202018-12-06%20at%2017.31.52.png?raw=true)
+![Screen Shot](https://github.com/JackZhao98/GraphicCalculator-SFML/blob/master/Resources/Screen%20Shot%202018-12-06%20at%2017.32.37.png?raw=true)
 
 ## Issues
 - CPU usage need to be optimized.
