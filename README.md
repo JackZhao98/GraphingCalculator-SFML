@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This is a **SFML** based **C++** Graphic Calculator Project. Capable of performing up to six basic equations plotting with well-designed User Interface.   
+This is a **SFML** based **C++** Graphic Calculator Project. Capable of performing up to six basic equations plotting with well-designed User Interface. 
 
 </br> Support operators with open parentheses including: 
 
@@ -342,4 +342,5 @@ bool _isEnabled;    // is label enabled?
 - [ ] Grid line numbers
 
 </br></br>
+Last updated by Jack Zhao on Dec 7, 2018, 12:07. All rights reserved.
 ## The end.
