@@ -165,6 +165,7 @@ void createAndDrawAxis();
 ```
 Create and draw grids and axises. </br>
 Grids are dynamically updated following the rule:
+
 Step Coefficient | Zoom In Threashold | Zoom Out Threashold
 ------------ | -------------| -------------
 1 | 9.2 | 17
