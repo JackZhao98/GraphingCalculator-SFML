@@ -30,7 +30,7 @@ UIButton::UIButton() {
     title.setCharacterSize(radius - 9);
     title.setTitle("");
 
-    setTextPositionToMiddle();
+    textAlignToCenter();
 }
 
 void UIButton::setType(TYPE _type) {
@@ -69,7 +69,7 @@ void UIButton::setTitleSize(unsigned int size) {
 void UIButton::setPosition(const sf::Vector2f& _position) {
     left.setPosition(_position);
     applyButtonPosition();
-    setTextPositionToMiddle();
+    textAlignToCenter();
 }
 
 void UIButton::applyButtonPosition() {
@@ -89,16 +89,12 @@ void UIButton::setTextPositionToLeft() {
     
 }
 
-void UIButton::setTextPositionToMiddle() {
+void UIButton::textAlignToCenter() {
 
     double textLength = title.getBoundary().width;
     double textHeight = title.getBoundary().height;
-
     sf::Vector2f midPoint = mid.getPosition() + sf::Vector2f(0.5 * mid.getGlobalBounds().width, 0.5 * mid.getGlobalBounds().height);
     title.setPosition(midPoint - sf::Vector2f(0.5 * textLength, textHeight));
-    if (textLength > (right.getOrigin().x - left.getOrigin().x)) {
-//        std::cout << getTitle()<< "Should reduce character size\n";
-    }
 }
 
 void UIButton::setTitle(const std::string& _title) {

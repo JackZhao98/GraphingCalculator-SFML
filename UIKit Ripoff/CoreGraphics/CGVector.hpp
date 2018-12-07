@@ -13,7 +13,6 @@ struct CGVector {
     double dx;
     double dy;
     
-    CGVector(int x = 0, int y = 0): dx(x), dy(y) {}
     CGVector(double x = 0, double y = 0): dx(x), dy(y) {}
 };
 

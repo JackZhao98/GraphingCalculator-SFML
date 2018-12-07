@@ -7,7 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EBF3586921A351760081B4DA /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EBF3586821A351760081B4DA /* main.cpp */; };
+		EB0B45DB21B0A05500F8C210 /* graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB0B45D921B0A05500F8C210 /* graph.cpp */; };
+		EB5BED9221A3CB5800146FDF /* UIView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB5BED9021A3CB5800146FDF /* UIView.cpp */; };
+		EB5BED9821A3CE7000146FDF /* CGRect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB5BED9621A3CE7000146FDF /* CGRect.cpp */; };
+		EB5BEDA721A3F66700146FDF /* UIButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB5BEDA521A3F66700146FDF /* UIButton.cpp */; };
+		EB5BEDAA21A3F76900146FDF /* UILabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB5BEDA821A3F76900146FDF /* UILabel.cpp */; };
+		EBC2A79F21A4908300FE6232 /* Graphing Calculator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EBC2A79D21A4908300FE6232 /* Graphing Calculator.cpp */; };
+		EBF3587621A352CF0081B4DA /* sfml-network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF3587021A352CF0081B4DA /* sfml-network.framework */; };
+		EBF3587721A352CF0081B4DA /* sfml-graphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF3587121A352CF0081B4DA /* sfml-graphics.framework */; };
+		EBF3587821A352CF0081B4DA /* sfml-window.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF3587221A352CF0081B4DA /* sfml-window.framework */; };
+		EBF3587921A352CF0081B4DA /* sfml-system.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF3587321A352CF0081B4DA /* sfml-system.framework */; };
+		EBF3587A21A352CF0081B4DA /* SFML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF3587421A352CF0081B4DA /* SFML.framework */; };
+		EBF3587B21A352CF0081B4DA /* sfml-audio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF3587521A352CF0081B4DA /* sfml-audio.framework */; };
+		EBF3589621A356A80081B4DA /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EBF3588D21A356A80081B4DA /* main.cpp */; };
+		EBF358DC21A3A7950081B4DA /* UIViewController-backup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EBF358DA21A3A7950081B4DA /* UIViewController-backup.cpp */; };
+		EBF3590621A3C2E90081B4DA /* expression.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EBF3590121A3C2E90081B4DA /* expression.cpp */; };
+		EBF3590721A3C2E90081B4DA /* operator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EBF3590221A3C2E90081B4DA /* operator.cpp */; };
+		EBF3590821A3C2E90081B4DA /* oprand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EBF3590321A3C2E90081B4DA /* oprand.cpp */; };
+		EBF3590921A3C2E90081B4DA /* token.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EBF3590421A3C2E90081B4DA /* token.cpp */; };
+		EBF3590A21A3C2E90081B4DA /* variable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EBF3590521A3C2E90081B4DA /* variable.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,8 +41,49 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		EB0B45D921B0A05500F8C210 /* graph.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = graph.cpp; sourceTree = "<group>"; };
+		EB0B45DA21B0A05500F8C210 /* graph.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = graph.hpp; sourceTree = "<group>"; };
+		EB5BED9021A3CB5800146FDF /* UIView.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = UIView.cpp; sourceTree = "<group>"; };
+		EB5BED9121A3CB5800146FDF /* UIView.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = UIView.hpp; sourceTree = "<group>"; };
+		EB5BED9621A3CE7000146FDF /* CGRect.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CGRect.cpp; sourceTree = "<group>"; };
+		EB5BED9721A3CE7000146FDF /* CGRect.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CGRect.hpp; sourceTree = "<group>"; };
+		EB5BED9D21A3D03B00146FDF /* CGPoint.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CGPoint.hpp; sourceTree = "<group>"; };
+		EB5BEDA021A3D12900146FDF /* CGSize.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CGSize.hpp; sourceTree = "<group>"; };
+		EB5BEDA521A3F66700146FDF /* UIButton.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = UIButton.cpp; sourceTree = "<group>"; };
+		EB5BEDA621A3F66700146FDF /* UIButton.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = UIButton.hpp; sourceTree = "<group>"; };
+		EB5BEDA821A3F76900146FDF /* UILabel.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = UILabel.cpp; sourceTree = "<group>"; };
+		EB5BEDA921A3F76900146FDF /* UILabel.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = UILabel.hpp; sourceTree = "<group>"; };
+		EB5BEDAD21A40A7400146FDF /* CGVector.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CGVector.hpp; sourceTree = "<group>"; };
+		EBC2A79D21A4908300FE6232 /* Graphing Calculator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "Graphing Calculator.cpp"; sourceTree = "<group>"; };
+		EBC2A79E21A4908300FE6232 /* Graphing Calculator.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "Graphing Calculator.hpp"; sourceTree = "<group>"; };
+		EBC2A7A121A4E39A00FE6232 /* stack.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = stack.hpp; sourceTree = "<group>"; };
+		EBC2A7A221A4E3A800FE6232 /* Linked List.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "Linked List.hpp"; sourceTree = "<group>"; };
+		EBC2A7A321A4E3A800FE6232 /* List.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = List.hpp; sourceTree = "<group>"; };
+		EBDE924821ACB40E00C37E51 /* VertexRect.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = VertexRect.hpp; sourceTree = "<group>"; };
+		EBDE924B21ACCA5300C37E51 /* GCTab.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GCTab.hpp; sourceTree = "<group>"; };
 		EBF3586521A351760081B4DA /* Graphing Calculator CAS */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Graphing Calculator CAS"; sourceTree = BUILT_PRODUCTS_DIR; };
-		EBF3586821A351760081B4DA /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		EBF3587021A352CF0081B4DA /* sfml-network.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-network.framework"; path = "../../../../../../../../Library/Frameworks/sfml-network.framework"; sourceTree = "<group>"; };
+		EBF3587121A352CF0081B4DA /* sfml-graphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-graphics.framework"; path = "../../../../../../../../Library/Frameworks/sfml-graphics.framework"; sourceTree = "<group>"; };
+		EBF3587221A352CF0081B4DA /* sfml-window.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-window.framework"; path = "../../../../../../../../Library/Frameworks/sfml-window.framework"; sourceTree = "<group>"; };
+		EBF3587321A352CF0081B4DA /* sfml-system.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-system.framework"; path = "../../../../../../../../Library/Frameworks/sfml-system.framework"; sourceTree = "<group>"; };
+		EBF3587421A352CF0081B4DA /* SFML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SFML.framework; path = ../../../../../../../../Library/Frameworks/SFML.framework; sourceTree = "<group>"; };
+		EBF3587521A352CF0081B4DA /* sfml-audio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-audio.framework"; path = "../../../../../../../../Library/Frameworks/sfml-audio.framework"; sourceTree = "<group>"; };
+		EBF3588D21A356A80081B4DA /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		EBF3589C21A3848F0081B4DA /* SF-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Light.otf"; sourceTree = "<group>"; };
+		EBF358DA21A3A7950081B4DA /* UIViewController-backup.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "UIViewController-backup.cpp"; sourceTree = "<group>"; };
+		EBF358DB21A3A7950081B4DA /* UIViewController-backup.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "UIViewController-backup.hpp"; sourceTree = "<group>"; };
+		EBF358DE21A3A82F0081B4DA /* constants.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = constants.cpp; sourceTree = "<group>"; };
+		EBF358FC21A3C2E90081B4DA /* variable.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = variable.hpp; sourceTree = "<group>"; };
+		EBF358FD21A3C2E90081B4DA /* expression.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = expression.hpp; sourceTree = "<group>"; };
+		EBF358FE21A3C2E90081B4DA /* token.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = token.hpp; sourceTree = "<group>"; };
+		EBF358FF21A3C2E90081B4DA /* oprand.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = oprand.hpp; sourceTree = "<group>"; };
+		EBF3590021A3C2E90081B4DA /* operator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = operator.hpp; sourceTree = "<group>"; };
+		EBF3590121A3C2E90081B4DA /* expression.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = expression.cpp; sourceTree = "<group>"; };
+		EBF3590221A3C2E90081B4DA /* operator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = operator.cpp; sourceTree = "<group>"; };
+		EBF3590321A3C2E90081B4DA /* oprand.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = oprand.cpp; sourceTree = "<group>"; };
+		EBF3590421A3C2E90081B4DA /* token.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = token.cpp; sourceTree = "<group>"; };
+		EBF3590521A3C2E90081B4DA /* variable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = variable.cpp; sourceTree = "<group>"; };
+		EBFABE9721B9AAF400D2C9A8 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,17 +91,67 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBF3587621A352CF0081B4DA /* sfml-network.framework in Frameworks */,
+				EBF3587721A352CF0081B4DA /* sfml-graphics.framework in Frameworks */,
+				EBF3587821A352CF0081B4DA /* sfml-window.framework in Frameworks */,
+				EBF3587921A352CF0081B4DA /* sfml-system.framework in Frameworks */,
+				EBF3587A21A352CF0081B4DA /* SFML.framework in Frameworks */,
+				EBF3587B21A352CF0081B4DA /* sfml-audio.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EB0B45D821B0A03800F8C210 /* Backup */ = {
+			isa = PBXGroup;
+			children = (
+				EBF358DB21A3A7950081B4DA /* UIViewController-backup.hpp */,
+				EBF358DA21A3A7950081B4DA /* UIViewController-backup.cpp */,
+				EBC2A79E21A4908300FE6232 /* Graphing Calculator.hpp */,
+				EBC2A79D21A4908300FE6232 /* Graphing Calculator.cpp */,
+			);
+			path = Backup;
+			sourceTree = "<group>";
+		};
+		EB5BEDAB21A3FB2F00146FDF /* CoreGraphics */ = {
+			isa = PBXGroup;
+			children = (
+				EB5BED9721A3CE7000146FDF /* CGRect.hpp */,
+				EB5BED9621A3CE7000146FDF /* CGRect.cpp */,
+				EB5BED9D21A3D03B00146FDF /* CGPoint.hpp */,
+				EB5BEDA021A3D12900146FDF /* CGSize.hpp */,
+				EB5BEDAD21A40A7400146FDF /* CGVector.hpp */,
+			);
+			path = CoreGraphics;
+			sourceTree = "<group>";
+		};
+		EBC2A7A021A4E36600FE6232 /* Stack & Queue */ = {
+			isa = PBXGroup;
+			children = (
+				EBC2A7A221A4E3A800FE6232 /* Linked List.hpp */,
+				EBC2A7A321A4E3A800FE6232 /* List.hpp */,
+				EBC2A7A121A4E39A00FE6232 /* stack.hpp */,
+			);
+			path = "Stack & Queue";
+			sourceTree = "<group>";
+		};
 		EBF3585C21A351760081B4DA = {
 			isa = PBXGroup;
 			children = (
-				EBF3586721A351760081B4DA /* Graphing Calculator CAS */,
+				EBFABE9721B9AAF400D2C9A8 /* README.md */,
+				EBF3588D21A356A80081B4DA /* main.cpp */,
+				EB0B45D921B0A05500F8C210 /* graph.cpp */,
+				EB0B45DA21B0A05500F8C210 /* graph.hpp */,
+				EBDE924B21ACCA5300C37E51 /* GCTab.hpp */,
+				EBDE924821ACB40E00C37E51 /* VertexRect.hpp */,
+				EBF3590B21A3C2F60081B4DA /* Calculator */,
+				EBF3586721A351760081B4DA /* UIKit Ripoff */,
+				EBC2A7A021A4E36600FE6232 /* Stack & Queue */,
+				EBF3589D21A384A60081B4DA /* Resources */,
 				EBF3586621A351760081B4DA /* Products */,
+				EBF3586F21A352CF0081B4DA /* Frameworks */,
+				EB0B45D821B0A03800F8C210 /* Backup */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,12 +163,65 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		EBF3586721A351760081B4DA /* Graphing Calculator CAS */ = {
+		EBF3586721A351760081B4DA /* UIKit Ripoff */ = {
 			isa = PBXGroup;
 			children = (
-				EBF3586821A351760081B4DA /* main.cpp */,
+				EBF358DE21A3A82F0081B4DA /* constants.cpp */,
+				EB5BED9021A3CB5800146FDF /* UIView.cpp */,
+				EB5BED9121A3CB5800146FDF /* UIView.hpp */,
+				EB5BEDA521A3F66700146FDF /* UIButton.cpp */,
+				EB5BEDA621A3F66700146FDF /* UIButton.hpp */,
+				EB5BEDA921A3F76900146FDF /* UILabel.hpp */,
+				EB5BEDA821A3F76900146FDF /* UILabel.cpp */,
+				EB5BEDAB21A3FB2F00146FDF /* CoreGraphics */,
 			);
-			path = "Graphing Calculator CAS";
+			path = "UIKit Ripoff";
+			sourceTree = "<group>";
+		};
+		EBF3586F21A352CF0081B4DA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EBF3587521A352CF0081B4DA /* sfml-audio.framework */,
+				EBF3587121A352CF0081B4DA /* sfml-graphics.framework */,
+				EBF3587021A352CF0081B4DA /* sfml-network.framework */,
+				EBF3587321A352CF0081B4DA /* sfml-system.framework */,
+				EBF3587221A352CF0081B4DA /* sfml-window.framework */,
+				EBF3587421A352CF0081B4DA /* SFML.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EBF3589D21A384A60081B4DA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EBF3589C21A3848F0081B4DA /* SF-Light.otf */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		EBF358FB21A3C2E90081B4DA /* Header Files */ = {
+			isa = PBXGroup;
+			children = (
+				EBF358FC21A3C2E90081B4DA /* variable.hpp */,
+				EBF358FD21A3C2E90081B4DA /* expression.hpp */,
+				EBF358FE21A3C2E90081B4DA /* token.hpp */,
+				EBF358FF21A3C2E90081B4DA /* oprand.hpp */,
+				EBF3590021A3C2E90081B4DA /* operator.hpp */,
+			);
+			path = "Header Files";
+			sourceTree = "<group>";
+		};
+		EBF3590B21A3C2F60081B4DA /* Calculator */ = {
+			isa = PBXGroup;
+			children = (
+				EBF358FB21A3C2E90081B4DA /* Header Files */,
+				EBF3590121A3C2E90081B4DA /* expression.cpp */,
+				EBF3590421A3C2E90081B4DA /* token.cpp */,
+				EBF3590221A3C2E90081B4DA /* operator.cpp */,
+				EBF3590321A3C2E90081B4DA /* oprand.cpp */,
+				EBF3590521A3C2E90081B4DA /* variable.cpp */,
+			);
+			path = Calculator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -118,7 +280,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBF3586921A351760081B4DA /* main.cpp in Sources */,
+				EBF358DC21A3A7950081B4DA /* UIViewController-backup.cpp in Sources */,
+				EBF3590721A3C2E90081B4DA /* operator.cpp in Sources */,
+				EBC2A79F21A4908300FE6232 /* Graphing Calculator.cpp in Sources */,
+				EBF3589621A356A80081B4DA /* main.cpp in Sources */,
+				EBF3590921A3C2E90081B4DA /* token.cpp in Sources */,
+				EB5BED9821A3CE7000146FDF /* CGRect.cpp in Sources */,
+				EB5BED9221A3CB5800146FDF /* UIView.cpp in Sources */,
+				EBF3590A21A3C2E90081B4DA /* variable.cpp in Sources */,
+				EB5BEDA721A3F66700146FDF /* UIButton.cpp in Sources */,
+				EBF3590821A3C2E90081B4DA /* oprand.cpp in Sources */,
+				EB5BEDAA21A3F76900146FDF /* UILabel.cpp in Sources */,
+				EB0B45DB21B0A05500F8C210 /* graph.cpp in Sources */,
+				EBF3590621A3C2E90081B4DA /* expression.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,6 +415,10 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A4R6VQRKMH;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -250,6 +428,10 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A4R6VQRKMH;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

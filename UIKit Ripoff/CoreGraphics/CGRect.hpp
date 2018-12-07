@@ -10,7 +10,7 @@
 #define CGRect_hpp
 #include "CGPoint.hpp"
 #include "CGSize.hpp"
-
+#include "CGVector.hpp"
 struct CGRect {
     CGPoint origin;
     CGSize size;
@@ -27,6 +27,7 @@ struct CGRect {
     double midY() const;
     double maxY() const;
     
+    CGPoint midPoint() const;
     void setOrigin(const CGPoint& point);
     void setSize(const CGSize& _size);
     bool contains(CGPoint aPoint) const;

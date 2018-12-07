@@ -20,6 +20,7 @@ public:
     optr(std::string op = std::string());
     double do_math(const double& Unary);
     double do_math(const double& LHS, const double& RHS);
+    double Tan(const double& var);
     std::ostream& print(std::ostream& out)const;
 };
 

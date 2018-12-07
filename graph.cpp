@@ -7,7 +7,7 @@
 //
 
 #include "graph.hpp"
-Graph::Graph() {
+Graph::Graph(): showGrid(true) {
     initRenderWindow(); // Initialize render window.
     initTabsColor();
 }
@@ -50,13 +50,9 @@ void Graph::processEvents() {
             case sf::Event::MouseWheelScrolled:
                 if (graphSafeArea.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
                     if (event.mouseWheelScroll.delta > 0) {
-//                        cout << "Zoom out " <<event.mouseWheelScroll.delta << endl;
-//                        cout << "new:\nxMin:" << xMin << " xMax:" << xMax << " yMin:" << yMin << " yMax:" << yMax << endl;
                         zoomOut(mousePos);
                     }
                     else if (event.mouseWheelScroll.delta < 0) {
-//                        cout << "Zoom in " <<event.mouseWheelScroll.delta << endl;
-//                        cout << "new:\nxMin:" << xMin << " xMax:" << xMax << " yMin:" << yMin << " yMax:" << yMax << endl;
                         zoomIn(mousePos);
                     }
                     refreshPlots();
@@ -64,7 +60,7 @@ void Graph::processEvents() {
                 render();
                 break;
             case sf::Event::MouseButtonReleased:
-                buttonInput_finally();
+                buttonInput();
                 for (int i = 0; i < 6; ++ i) {
                     if (tabs[i].contains(sf::Vector2f(sf::Mouse::getPosition(window)))) {
                         if (activeTab != nullptr)
@@ -78,13 +74,6 @@ void Graph::processEvents() {
                 break;
             case sf::Event::KeyPressed:
                 switch (event.key.code) {
-//                    case sf::Keyboard::B:
-//                        if (graphSafeArea.frame.height() < DEFAULT_H) {
-//                            graphSafeArea.setSize(CGSize(DEFAULT_W, DEFAULT_H));
-//                        } else {
-//                            graphSafeArea.setSize(CGSize(DEFAULT_W, 0.65 * DEFAULT_H - 20 - graphSafeArea.frame.origin.y));
-//                        }
-//                        break;
                     case sf::Keyboard::BackSpace:
                         if (activeTab != nullptr)
                             activeTab -> removeToken();
@@ -120,7 +109,10 @@ void Graph::processEvents() {
                         cout << "get total: " << DEFAULT_H << endl;
                         cout << "origin: (" << origin.x << "," << origin.y << ")" << endl;
                         cout << "mousePos: (" << mousePos.x << "," << mousePos.y << ")" << endl;
-
+                        break;
+                    case sf::Keyboard::G:
+                        showGrid = !showGrid;
+                        break;
                     default:
                         break;
                 }
@@ -172,7 +164,7 @@ void Graph::mouseHoveringAndPressingEvent() {
 }
 
 // Input/button settings
-void Graph::buttonInput_finally() {
+void Graph::buttonInput() {
     
     if (_1.contains(sf::Vector2f(sf::Mouse::getPosition(window)))) {
         if (activeTab != nullptr)
@@ -336,19 +328,19 @@ void Graph::drawLines() {
     for (int i = 0; i < 6; ++ i) {
         for (int j = 1; j < coordinates[i].size(); ++ j) {
             if (abs(coordinates[i][j].y - coordinates[i][j-1].y) < graphSafeArea.frame.height() ) {
-                /*VertexRect line;
+                VertexRect line;
                 line.setColor(tabs[i].getColor());
                 line.setStart(CGPoint(coordinates[i][j-1].x,coordinates[i][j-1].y));
                 line.setEnd(CGPoint(coordinates[i][j].x,coordinates[i][j].y));
                 window.draw(line.getRect());
-                */
+                /*
                 VertexArray line(LineStrip, 2);
                 line[0].position = coordinates[i][j-1];
                 line[1].position = coordinates[i][j];
                 line[0].color = tabs[i].getColor();
                 line[1].color = tabs[i].getColor();
                 window.draw(line);
-                
+                */
             }
         }
     }
@@ -389,23 +381,138 @@ void Graph::drawButtons() {
 }
 
 void Graph::createAndDrawAxis() {
+    updateGraphingParameters();
+    if (showGrid)
+        drawGrids();
     if (origin.x < graphSafeArea.frame.width()) {
-        VertexArray yAxis(Lines, 2);
-        yAxis[0].position = Vector2f(origin.x,0);
-        yAxis[1].position = Vector2f(origin.x,graphSafeArea.frame.height());
-        yAxis[0].color = sf::Color::White;
-        yAxis[1].color = sf::Color::White;
-        window.draw(yAxis);
+        VertexRect yAxis;
+        yAxis.setStart(CGPoint(origin.x, 0));
+        yAxis.setEnd(CGPoint(origin.x, graphSafeArea.frame.height()));
+        yAxis.setStroke(0.2);
+        yAxis.setColor(sf::Color::White);
+        window.draw(yAxis.getRect());
     }
     if (origin.y < graphSafeArea.frame.height()) {
-        VertexArray xAxis(Lines, 2);
-        xAxis[0].position = Vector2f(0,origin.y);
-        xAxis[1].position = Vector2f(graphSafeArea.frame.width(),origin.y);
-        xAxis[0].color = sf::Color::White;
-        xAxis[1].color = sf::Color::White;
-        window.draw(xAxis);
+        VertexRect xAxis;
+        xAxis.setStart(CGPoint(0,origin.y));
+        xAxis.setEnd(CGPoint(graphSafeArea.frame.width(),origin.y));
+        xAxis.setStroke(0.2);
+        xAxis.setColor(sf::Color::White);
+        window.draw(xAxis.getRect());
     }
     
+}
+
+float Graph::leftMostGridPixelValue() {
+    float pixelPerStep = xStep / xValuePerPixel;
+    float x = origin.x; // 原点的坐标值
+    if (x > 0) {
+        for (; x > 0; x -= pixelPerStep);
+        return x;
+    }
+    for (; x < -pixelPerStep; x += pixelPerStep);
+    return x;
+}
+
+float Graph::topMostGridPixelValue() {
+    float pixelPerStep = yStep / yValuePerPixel;
+    float y = origin.y;
+    if (y > 0) {
+        for (; y > 0; y -= pixelPerStep);
+        return y;
+    }
+    for (; y < -pixelPerStep; y += pixelPerStep);
+    return y;
+    return y;
+}
+
+string Graph::floatToScitificNotation(float value)
+{
+    stringstream ss;
+    ss << value;
+    ss << std::scientific;
+    return ss.str();
+}
+
+void Graph::drawGrids() {
+    double startingXPosition = leftMostGridPixelValue();
+    for (double i = startingXPosition; i < DEFAULT_W; i += xStep / xValuePerPixel) {
+        switch (stepCoefficient) {
+            case 2:
+                for (int j = 0; j < 4;) {
+                    VertexArray gridLine(Lines,2);
+                    gridLine[0].position = sf::Vector2f(i + j * 0.25 * xStep / xValuePerPixel, 0);
+                    gridLine[1].position = sf::Vector2f(i + j * 0.25 * xStep / xValuePerPixel, graphSafeArea.frame.height());
+                    if (j++ == 0) {
+                        gridLine[0].color = Color{120,120,120};
+                        gridLine[1].color = Color{120,120,120};
+                    } else {
+                        gridLine[0].color = Color{40,40,40};
+                        gridLine[1].color = Color{40,40,40};
+                    }
+                    window.draw(gridLine);
+                }
+                break;
+            case 1:
+            case 5:
+                for (int j = 0; j < 5;) {
+                    VertexArray gridLine(Lines,2);
+                    gridLine[0].position = sf::Vector2f(i + j * 0.2 * xStep / xValuePerPixel, 0);
+                    gridLine[1].position = sf::Vector2f(i + j * 0.2 * xStep / xValuePerPixel, graphSafeArea.frame.height());
+                    if (j++ == 0) {
+                        gridLine[0].color = Color{120,120,120};
+                        gridLine[1].color = Color{120,120,120};
+                    } else {
+                        gridLine[0].color = Color{40,40,40};
+                        gridLine[1].color = Color{40,40,40};
+                    }
+                    window.draw(gridLine);
+                }
+                break;
+            default:
+                break;
+        }
+
+    }
+
+    double startingYPosition = topMostGridPixelValue();
+    for (int i = startingYPosition; i < graphSafeArea.frame.height(); i += yStep/yValuePerPixel) {
+        switch (stepCoefficient) {
+            case 2:
+                for (int j = 0; j < 4;) {
+                    VertexArray gridLine(Lines,2);
+                    gridLine[0].position = sf::Vector2f(0, i + j * 0.25 * yStep / yValuePerPixel);
+                    gridLine[1].position = sf::Vector2f(graphSafeArea.frame.width(), i + j * 0.25 * yStep / yValuePerPixel);
+                    if (j++ == 0) {
+                        gridLine[0].color = Color{120,120,120};
+                        gridLine[1].color = Color{120,120,120};
+                    } else {
+                        gridLine[0].color = Color{40,40,40};
+                        gridLine[1].color = Color{40,40,40};
+                    }
+                    window.draw(gridLine);
+                }
+                break;
+            case 1:
+            case 5:
+                for (int j = 0; j < 5;) {
+                    VertexArray gridLine(Lines,2);
+                    gridLine[0].position = sf::Vector2f(0, i + j * 0.2 * yStep / yValuePerPixel);
+                    gridLine[1].position = sf::Vector2f(graphSafeArea.frame.width(), i + j * 0.2 * yStep / yValuePerPixel);
+                    if (j++ == 0) {
+                        gridLine[0].color = Color{120,120,120};
+                        gridLine[1].color = Color{120,120,120};
+                    } else {
+                        gridLine[0].color = Color{40,40,40};
+                        gridLine[1].color = Color{40,40,40};
+                    }
+                    window.draw(gridLine);
+                }
+                break;
+            default:
+                break;
+        }
+    }
 }
 
 
@@ -432,7 +539,6 @@ void Graph::draggingEvent(sf::Vector2i mouseVector) {
 void Graph::zoomIn(sf::Vector2i instantMousePos) {
     float mouseXRatio = (instantMousePos.x- graphSafeArea.frame.minX())/graphSafeArea.frame.width();
     float mouseYRatio = (instantMousePos.y - graphSafeArea.frame.maxY())/graphSafeArea.frame.height();
-
     float mouseXValue = xMin + (xMax - xMin) * mouseXRatio;
     float mouseYValue = yMin - (yMax - yMin) * mouseYRatio;
 
@@ -440,6 +546,35 @@ void Graph::zoomIn(sf::Vector2i instantMousePos) {
     xMax = mouseXValue + ZoomingRatio * (xMax - mouseXValue);
     yMin = mouseYValue + ZoomingRatio * (yMin - mouseYValue);
     yMax = mouseYValue + ZoomingRatio * (yMax - mouseYValue);
+    
+    float blockNum = (xMax - xMin) / xStep;
+    
+    switch (stepCoefficient) {
+        case 1:
+            if (blockNum <= 9.2) {
+                xStep /= 2;
+                yStep = xStep;
+                stepCoefficient = 5;
+            }
+            break;
+        case 2:
+            if (blockNum <= 9) {
+                xStep /= 2;
+                yStep = xStep;
+                stepCoefficient = 1;
+            }
+            break;
+        case 5:
+            if (blockNum <= 7) {
+                xStep /= 2.5;
+                yStep = xStep;
+                stepCoefficient = 2;
+            }
+            break;
+            
+        default:
+            break;
+    }
     updateGraphingParameters();
 }
 
@@ -454,25 +589,60 @@ void Graph::zoomOut(sf::Vector2i instantMousePos) {
     xMax = mouseXValue + (xMax - mouseXValue) / ZoomingRatio;
     yMin = mouseYValue + (yMin - mouseYValue) / ZoomingRatio;
     yMax = mouseYValue + (yMax - mouseYValue) / ZoomingRatio;
+    
+    float blockNum = (xMax - xMin) / xStep;
+    switch (stepCoefficient) {
+        case 1:
+            if (blockNum >= 17) {
+                xStep *= 2;
+                yStep = xStep;
+                stepCoefficient = 2;
+            }
+            break;
+        case 2:
+            if (blockNum >= 16.5) {
+                xStep *= 2.5;
+                yStep = xStep;
+                stepCoefficient = 5;
+            }
+            break;
+        case 5:
+            if (blockNum >= 17.4) {
+                xStep *= 2;
+                yStep = xStep;
+                stepCoefficient = 1;
+            }
+            break;
+            
+        default:
+            break;
+    }
     updateGraphingParameters();
 }
 
 void Graph::resetPos() {
-    xMin = -13;
-    xMax = 13;
+    xMin = -10;
+    xMax = 10;
     xValuePerPixel = (xMax - xMin)/graphSafeArea.frame.width();
     yValuePerPixel = xValuePerPixel;
     yMin = -graphSafeArea.frame.midY()*yValuePerPixel;
     yMax = -yMin;
-//    cout << "yMin: " << yMin << " yMax: " << yMax << endl;
+    
+    
+    stepCoefficient = 2;
+    xStep = 2;
+    yStep = xStep;
     updateGraphingParameters();
 }
 
 // Initializer
 void Graph::initRenderWindow() {
-    window.create(VideoMode(DEFAULT_W, DEFAULT_H), "Graph.io",sf::Style::Close | sf::Style::Resize);
+    ContextSettings settings;
+    settings.antialiasingLevel = 8;
+    window.create(VideoMode(DEFAULT_W, DEFAULT_H), "Graph.io",sf::Style::Close | sf::Style::Resize, settings);
     window.setFramerateLimit(FrameRate);
     window.setVerticalSyncEnabled(true);
+
     graphSafeArea.setPosition(CGPoint(0,0));
     graphSafeArea.setSize(CGSize(DEFAULT_W, 0.65 * DEFAULT_H - 25 - graphSafeArea.frame.origin.y));
     graphSafeArea.backgroundColor(sf::Color{20,20,20});

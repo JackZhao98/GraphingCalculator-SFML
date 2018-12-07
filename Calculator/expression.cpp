@@ -24,9 +24,17 @@ istream& operator >> (istream& ins, expression& e) {
 void expression::convert (string input) {
     int prev = 0;
     steck<string> op;
+    if (input.length() <= 0) {
+        _error = 1;
+        return;
+    }
+    while (input[input.length() - 1] == ' ')
+        input.pop_back();
+    
     stringstream ss(input);
     string temp;
     while (__token.size() > 0) {
+        delete __token.front();
         __token.pop();
     }
     while (!ss.eof()) {
@@ -38,10 +46,17 @@ void expression::convert (string input) {
                 op.push(temp);
             }
             else if (temp == ")") {
-                while (!op.empty() && op.top() != "(") {
-                    __token.push(new optr(op.pop()));
+                while (!op.empty()) {
+                    if (op.top() != "(") {
+                        __token.push(new optr(op.pop()));
+                    }
+                    else {
+                        op.pop();
+                    }
                 }
-                op.pop();
+                if (!op.empty()) {
+                    op.pop();
+                }
                 if (!op.empty()) {
                     if (priority(op.top()) == 0)
                         __token.push(new optr(op.pop()));
@@ -68,41 +83,63 @@ void expression::convert (string input) {
 }
 
 double expression::eval(double _x_value) {
+    if (_exp == string()) {
+        _error = 1;
+        return 0;
+    }
     convert(_exp);
-    if (__token.empty()) return 0;
+    if (__token.empty()) {
+        _error = 1;
+        return 0;
+    }
     steck<double> result;
     while (!__token.empty()) {
         auto front = __token.front();
         if (front -> type() == 'v') {
             result.push(_x_value);
+            delete __token.front();
             __token.pop();
+            
         }
         else if (front -> type() == 'n') {
             result.push(front -> get_val());
+            delete __token.front();
             __token.pop();
+            
         }
         else if (front -> type() == 'u') {
             
-            assert(!result.empty());
+            if (result.empty()) {
+                _error = 1;
+                return 0;
+            }
             
             double num = result.top();
             result.pop();
             result.push(front -> do_math(num));
+            delete __token.front();
             __token.pop();
         }
         else {
+            if (result.empty()) {
+                _error = 1;
+                return 0;
+            }
             double rhs = result.pop();
             
-            assert(!result.empty());
+            if (result.empty()) {
+                _error = 1;
+                return 0;
+            }
             
             double lhs = result.pop();
-            
+                
             result.push(front -> do_math(lhs, rhs));
-            
+            delete __token.front();
             __token.pop();
         }
     }
-    
+    _error = 0;
     return result.top();
     
 }
@@ -120,7 +157,7 @@ int expression::priority(string OPERATOR) {
         return 2;
     if (OPERATOR == "^")
         return 3;
-    if (OPERATOR == "sqrt" || OPERATOR == "neg" || OPERATOR == "sin" || OPERATOR == "cos" || OPERATOR == "tan")
+    if (OPERATOR == "sqrt" || OPERATOR == "neg" || OPERATOR == "sin" || OPERATOR == "cos" || OPERATOR == "tan"|| OPERATOR == "abs")
         return 4;
     return 0;
 }

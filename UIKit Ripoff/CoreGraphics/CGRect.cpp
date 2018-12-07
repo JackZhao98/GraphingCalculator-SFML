@@ -13,7 +13,6 @@ CGRect::CGRect(CGPoint _origin, CGSize _size): origin(_origin), size(_size) {}
 CGRect::CGRect(double x, double y, double width, double height) {
     origin = CGPoint(x, y);
     size = CGSize(width, height);
-    std::cout << "CGRect Created\n";
 }
 
 void CGRect::setOrigin(const CGPoint& point) {
@@ -48,6 +47,9 @@ double CGRect::maxY() const{
     return size.height + origin.y;
 }
 
+CGPoint CGRect::midPoint() const {
+    return CGPoint(midX(), midY());
+}
 
 bool CGRect::contains(CGPoint aPoint) const{
     return (aPoint.x >= minX() && aPoint.x <= maxX()

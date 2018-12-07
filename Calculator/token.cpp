@@ -13,6 +13,5 @@ std::ostream& token::print(std::ostream& out)const {
     return out;
 }
 std::ostream& operator << (std::ostream& out, const token* _t) {
-//
     return _t -> print(out);
 }

@@ -26,12 +26,19 @@ public:
     }
     
     queue<token*> get_token() {return __token;}
-    string get_expression() {return _exp;}
+    string getEquation() {return _exp;}
     
     friend ostream& operator << (ostream& out, expression& PRINT);
     friend istream& operator >> (istream& ins, expression& e);
-    double eval(double _x_value = 0);
     
+    bool isError() {
+        return _error != 0;
+    }
+    double eval(double _x_value = 0);
+    void setEquation(const string& _input) {
+        _exp = _input;
+        eval();
+    }
 
 private:
     void convert (string input);
