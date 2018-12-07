@@ -2,7 +2,9 @@
 
 ## Project Overview
 
-This is a **SFML** based **C++** Graphic Calculator Project. Supports basic operators with open parentheses including: 
+This is a **SFML** based **C++** Graphic Calculator Project. Capable of performing up to six basic equations plotting with well-designed User Interface.   
+
+</br> Support operators with open parentheses including: 
 
 Operator | Definition | Type
 ------------ | -------------| -------------
@@ -60,7 +62,7 @@ Similar to Apple's Autolayout, all UI objects in this object is in fixed aspect 
 
 </br>
 
-### Function Graph Parameters
+### Graphing/Plotting Parameters
 
 Contains basic graph parameters: 
 ```C++
