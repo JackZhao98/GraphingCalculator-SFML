@@ -284,6 +284,9 @@ bool _isEnabled;    // is label enabled?
 
 # Preview
 
+![Screen Shot](GraphicCalculator-SFML/Resources/Screen Shot 2018-12-06 at 17.31.52.png)
+![Screen Shot](GraphicCalculator-SFML/Resources/Screen Shot 2018-12-06 at 17.32.37.png)
+
 ## Issues
 - CPU usage need to be optimized.
 - Grid line number does not show in scientific notations properly.
