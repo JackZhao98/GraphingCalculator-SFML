@@ -41,8 +41,11 @@ Enter (Tab Selected) | Next Tab
 ### Call in Main ()
 
 ```C++
-graph g;
-g.build();
+int main() {
+  graph g;
+  g.build();
+  return 0;
+}
 ```
 </br></br>
 # Part 1: Calculator
