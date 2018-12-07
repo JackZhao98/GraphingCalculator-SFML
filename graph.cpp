@@ -426,14 +426,6 @@ float Graph::topMostGridPixelValue() {
     return y;
 }
 
-string Graph::floatToScitificNotation(float value)
-{
-    stringstream ss;
-    ss << value;
-    ss << std::scientific;
-    return ss.str();
-}
-
 void Graph::drawGrids() {
     double startingXPosition = leftMostGridPixelValue();
     for (double i = startingXPosition; i < DEFAULT_W; i += xStep / xValuePerPixel) {

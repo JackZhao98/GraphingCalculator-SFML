@@ -43,7 +43,6 @@ public:
     void drawTabs();
     float leftMostGridPixelValue();
     float topMostGridPixelValue();
-    string floatToScitificNotation(float value);
     void drawGrids();
     void createAndDrawAxis();
     
