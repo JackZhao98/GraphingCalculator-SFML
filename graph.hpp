@@ -21,37 +21,75 @@ public:
     // CTORS
     Graph();
     
-    // Initializer
+    //------------ Init Section ---------------
     void initRenderWindow();
-    void initButtons(); // init buttons.
+    /*  Render Window initializer. Creates and Gives sf::RenderWindow default values
+     */
+    void initButtons();
+    /*
+     * Initialize buttons with position, title, size.
+     */
     void initTabs();
+    /*
+     * Initialize Tabs with position, title, size.
+     */
     void initTabsColor();
-    // Render
+    /*
+     * Initialize Tabs with default color set.
+     */
+    
+    //------------ Render Section ---------------
     void build();
+    /*
+     * Call to run the program.
+     */
     void render();
+    /*
+     * Render loop. All drawings function calls are inside.
+     */
     void processEvents();
+    /*
+     * Poll and process most of the events here.
+     */
     void mouseHoveringAndPressingEvent();
+    /*
+    * Process mouse press and hover on buttons.
+    */
     void buttonInput();
-    bool trigNeedToMultiply (char c);
+    /*
+    * Click on buttons and do actions.
+    * Input equations into tabs.
+    */
     
-    // Plotting
-    void refreshPlots();
-    
-    // Drawing.
-    void drawButtons();
+    //------------ Plotting Section ---------------
     void drawLines();
-    void drawTabs();
-    float leftMostGridPixelValue();
-    float topMostGridPixelValue();
+    /*
+     * Draw lines on the screen with pre-stored value inside the vector array.
+     */
+    void refreshPlots();
+    /*
+     * Recalculate the coordinates with new xMin and xMax.
+     */
+    void updateGraphingParameters();
+    /*
+     * Update params with new xMin and xMax.
+     */
+    void resetPos();
+    /*
+     * Reset xMin and xMax to Default
+     */
+
+    //---------- User Interface Section -------------
+    void drawButtons();
     void drawGrids();
     void createAndDrawAxis();
-    
-    // Graph UI related.
-    void updateGraphingParameters();
     void draggingEvent(sf::Vector2i mouseVector);
     void zoomIn(sf::Vector2i instantMousePos);
     void zoomOut(sf::Vector2i instantMousePos);
-    void resetPos();
+    bool trigNeedToMultiply (char c);
+    float leftMostGridPixelValue();
+    float topMostGridPixelValue();
+    
 private:
     // 跟画图有关
     // Graphing related

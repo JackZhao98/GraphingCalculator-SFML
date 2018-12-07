@@ -54,6 +54,7 @@
 		EB5BEDA821A3F76900146FDF /* UILabel.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = UILabel.cpp; sourceTree = "<group>"; };
 		EB5BEDA921A3F76900146FDF /* UILabel.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = UILabel.hpp; sourceTree = "<group>"; };
 		EB5BEDAD21A40A7400146FDF /* CGVector.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CGVector.hpp; sourceTree = "<group>"; };
+		EBBD995F21BB106300507E34 /* Screen Shot 2018-12-07 at 12.16.00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2018-12-07 at 12.16.00.png"; sourceTree = "<group>"; };
 		EBC2A79D21A4908300FE6232 /* Graphing Calculator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "Graphing Calculator.cpp"; sourceTree = "<group>"; };
 		EBC2A79E21A4908300FE6232 /* Graphing Calculator.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "Graphing Calculator.hpp"; sourceTree = "<group>"; };
 		EBC2A7A121A4E39A00FE6232 /* stack.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = stack.hpp; sourceTree = "<group>"; };
@@ -196,6 +197,7 @@
 		EBF3589D21A384A60081B4DA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				EBBD995F21BB106300507E34 /* Screen Shot 2018-12-07 at 12.16.00.png */,
 				EBFABE9921BA058B00D2C9A8 /* Screen Shot 2018-12-06 at 17.31.52.png */,
 				EBFABE9821BA058A00D2C9A8 /* Screen Shot 2018-12-06 at 17.32.37.png */,
 				EBF3589C21A3848F0081B4DA /* SF-Light.otf */,
