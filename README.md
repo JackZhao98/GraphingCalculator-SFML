@@ -342,5 +342,5 @@ bool _isEnabled;    // is label enabled?
 - [ ] Grid line numbers
 
 </br></br>
-Last updated by Jack Zhao on Dec 7, 2018, 12:07. All rights reserved.
+> Last updated by Jack Zhao on Dec 7, 2018, 12:07. </br> Copyright © 2018 Jack Zhao. All rights reserved.
 ## The end.
