@@ -10,7 +10,6 @@
 #define UIButton_hpp
 #include <iostream>
 #include "UILabel.hpp"
-//#include "constants.cpp"
 #include "SFML/Graphics.hpp"
 
 enum STATE {
