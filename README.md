@@ -53,7 +53,6 @@ int main() {
 ### Algorithm
 Going through RPN loops for over two thousands times per equation every frame is a pain in the neck for the CPU. That will keep the coordinates updated but it is unnecessary when the user stops dragging or zooming in/out. My solution is to update the coordinate only once right after the domain/range has been modified or the equation's update. I store these coordinate values inside a `vector<sf::Vector2f>[6]` array to avoid uncessary work. Also, due to my ~~laziness~~ inadequacy in the optimization, I limited the users to have **six** equations at most.
 
-</br>
 
 ### Graphing
 The initial thoughts of drawing graphs was to use `sf::VertexArray` to connect dots. It saves tons of CPU usage but the lines are too thin to look at. So I created a class `VertexRectangle` which takes in the starting and ending coordinates to create a `sf::RectangleShape` object connecting the dots. The CPU usage increases significantly......but the lines just have a wayyy much nicer look.
@@ -62,12 +61,11 @@ The initial thoughts of drawing graphs was to use `sf::VertexArray` to connect d
 
 ![Screen Shot](https://github.com/JackZhao98/GraphicCalculator-SFML/blob/master/Resources/Screen%20Shot%202018-12-06%20at%2017.31.52.png?raw=true)
 ![Screen Shot](https://github.com/JackZhao98/GraphicCalculator-SFML/blob/master/Resources/Screen%20Shot%202018-12-06%20at%2017.32.37.png?raw=true)
+![Screen Shot](https://github.com/JackZhao98/GraphicCalculator-SFML/blob/master/Resources/Screen%20Shot%202018-12-07%20at%2012.16.00.png?raw=true)
 
-</br>
+</br></br>
 
 Here's some details of the code.
-
-</br>
 
 # Part 1: Calculator
 
