@@ -14,7 +14,3 @@ std::ostream& oprand::print(std::ostream& out)const {
     return out;
 }
 
-bool oprand::action() {
-    
-    return true;
-}
