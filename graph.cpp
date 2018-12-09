@@ -200,9 +200,7 @@ void Graph::processEvents() {
                     refreshPlots();
                     render();
                 }
-                
                 break;
-
             case sf::Event::MouseWheelScrolled:
                 if (graphSafeArea.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
                     if (event.mouseWheelScroll.delta > 0) {
@@ -464,19 +462,22 @@ void Graph::drawLines() {
     for (int i = 0; i < 6; ++ i) {
         for (int j = 1; j < coordinates[i].size(); ++ j) {
             if (abs(coordinates[i][j].y - coordinates[i][j-1].y) < graphSafeArea.frame.height() ) {
-                VertexRect line;
-                line.setColor(tabs[i].getColor());
-                line.setStart(CGPoint(coordinates[i][j-1].x,coordinates[i][j-1].y));
-                line.setEnd(CGPoint(coordinates[i][j].x,coordinates[i][j].y));
-                window.draw(line.getRect());
-                /*
-                 VertexArray line(LineStrip, 2);
-                 line[0].position = coordinates[i][j-1];
-                 line[1].position = coordinates[i][j];
-                 line[0].color = tabs[i].getColor();
-                 line[1].color = tabs[i].getColor();
-                 window.draw(line);
-                 */
+                if (coordinates[i][j].y < graphSafeArea.frame.height() && coordinates[i][j].y > 0) {
+                    VertexRect line;
+                    line.setColor(tabs[i].getColor());
+                    line.setStart(CGPoint(coordinates[i][j-1].x,coordinates[i][j-1].y));
+                    line.setEnd(CGPoint(coordinates[i][j].x,coordinates[i][j].y));
+                    window.draw(line.getRect());
+                    /*
+                     VertexArray line(LineStrip, 2);
+                     line[0].position = coordinates[i][j-1];
+                     line[1].position = coordinates[i][j];
+                     line[0].color = tabs[i].getColor();
+                     line[1].color = tabs[i].getColor();
+                     window.draw(line);
+                     */
+                }
+                
             }
         }
     }
