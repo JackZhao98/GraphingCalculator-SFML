@@ -25,26 +25,47 @@ public:
         (_exp == string())? void():convert(_s_input);
     }
     
+    // Accessor
     queue<token*> get_token() {return __token;}
     string getEquation() {return _exp;}
-    
-    friend ostream& operator << (ostream& out, expression& PRINT);
-    friend istream& operator >> (istream& ins, expression& e);
-    
     bool isError() {
         return _error != 0;
     }
+    // I/O Stream, for debug.
+    friend ostream& operator << (ostream& out, expression& PRINT);
+    friend istream& operator >> (istream& ins, expression& e);
+
+    
     double eval(double _x_value = 0);
+    /*
+    * This function takes an x value and input to the equation.
+    * Using RPN algorithm to calculate a correct Y value (result of the expression).
+    *
+    */
     void setEquation(const string& _input) {
         _exp = _input;
         eval();
     }
+    /*
+    * Set up equation.
+    *
+    */
 
 private:
     void convert (string input);
+    /*
+    * Convert _exp string into tokens in RPN form.
+    */
     int priority(string OPERATOR);
+    /*
+    * Determine operator priority.
+    * Very dumb approach.
+    */
     bool peek(string& s)const;
-    
+    /*
+    * Peek at next char.
+    * Returns if the next character is a digit.
+    */
     queue<token*> __token;
     string _exp;
     int _error;
