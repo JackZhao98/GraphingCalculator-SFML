@@ -12,7 +12,10 @@
 #include "Calculator/Header Files/expression.hpp"
 
 
-
+// Class: GCTab
+// Creates a button with configurable string inside. 
+// It Stores an expression type object, keep equation updated based on current string.
+// Automatic checks equation availability to setup text color.
 
 class GCTab {
 
@@ -23,8 +26,10 @@ private:
     bool isEnabled;
     UIButton tab;
 public:
+    // Public member. Stores a equation.
     expression equation;
     
+    // CTOR.
     GCTab() {
         enabled();
         tempEquation = "";
@@ -33,17 +38,57 @@ public:
         equation.setEquation(tempEquation);
         updateExpression();
     }
+    // Accessor
     bool Enabled() {
-        return static_cast<void>((tabAutoTextColor())),isEnabled;}
+        /*
+        *   Returns if the tab is enabled.
+        */
+        return static_cast<void>((tabAutoTextColor())),isEnabled;
+    }
+     sf::Color getColor() const {
+         /*
+        *   Returns the line color.
+        */
+        return color;
+    }
+    double getLength()const {
+        /*
+        *   Returns the tab button length.
+        */
+        return tab.getLength();
+    }
+    double getHeight() const {
+        /*
+        *   Returns the tab button height.
+        */
+        return tab.getHeight();
+    }
+    STATE getState() const {
+        /*
+        *   Returns the STATE of the button.
+        */
+        return tab.getState();
+    }
+    
     void enabled() {
+        /*
+        *   Enables the GCTab, and sets the text color.
+        */
         tabAutoTextColor();
-        isEnabled = true;}
+        isEnabled = true;
+    }
     void disabled() {
+        /*
+        *   Disables the GCTab, and sets the text color.
+        */
         tabAutoTextColor();
         isEnabled = false;
     }
-    // 加token
     void append(const string& token) {
+        /*
+        *   Append token (string type) to the expression,
+        *   and update the equation with new string.
+        */
         if (tempEquation.size() > 0 ) {
             if (needSpace(token))
                 tempEquation.append(" ");
@@ -52,18 +97,28 @@ public:
         updateExpression();
     }
     bool needSpace(const string& token) {
+        /*
+        *   Checks if the current need to be appended a space to keep syntax correct.
+        */
         return !((isdigit(tempEquation[tempEquation.size() - 1]) && (isdigit(token[0])||token[0] == '.')) || (isdigit(token[0]) && tempEquation[tempEquation.size() - 1] == '.'));
     }
-    
-    // 清空
     void clear() {
+         /*
+         *   Clear tab.
+         *   Deletes the expression in the tab and update appearance.
+         */
         tempEquation = "";
         updateExpression();
     }
-    // 删掉最后一项
+
     void removeToken() {
+         /*
+         *   Remove a token.
+         *   Allow user to delete a complete token with one click.
+         */
         if (tempEquation.size() > 0)
             tempEquation.pop_back();
+        // Only pop back when the size is greater than zero.
         while(tempEquation.size() > 0) {
             if (getLastChar() == ' ') {
                 tempEquation.pop_back();
@@ -74,34 +129,29 @@ public:
         updateExpression();
     }
     
-    sf::Color getColor() const {
-        return color;
-    }
-    double getLength()const {
-        return tab.getLength();
-    }
-    double getHeight() const {
-        return tab.getHeight();
-    }
-    STATE getState() const {
-        return tab.getState();
-    }
-    
+  
     void drawTab(sf::RenderWindow& _window) {
+        /*
+         *   Draw sfml objects inside the window.
+         */
         tab.placeButton(_window);
     }
     bool contains(sf::Vector2f MousePos) {
+        /*
+         *   Checks if the tab contains a point.
+         */
         return tab.contains(MousePos);
     }
     
-    // 设置状态
+    // Set State
     void setState(STATE state) {
         tab.setState(state);
     }
-    // 设置位置
+    // Set Tab position
     void setPosition(sf::Vector2f _pos) {
         tab.setPosition(_pos);
     }
+    // Set Individual Tab Height
     void setHeight(double height) {
         tab.setHeight(height);
     }
