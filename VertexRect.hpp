@@ -37,11 +37,18 @@ public:
         initVertexRect();
         return rect;
     }
+    /*
+    *   Run the init process and returns the sf::RectangleShape
+    */
     
     double getAngle() {
         double tan = atan(end.y - start.y);
         return tan*180/3.141592653589;
     }
+    /*
+    *   Calculate rotation angle using tangent
+    *   We have the Y-difference from two points, and the x-difference is one pixel.
+    */
     
     double getLength() {
         double dx2 = pow((end.x - start.x),2);
