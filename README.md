@@ -23,7 +23,7 @@ tan( ) | Tangent | Unary
 
 ## Features
 
-Single variable, six equations in total, cartesian coordinates, with Button UI
+Single variable, enter up to six equations, cartesian coordinates, dynamic grids, with Button UI.
 
 ### Keyboard Shortcut
 
