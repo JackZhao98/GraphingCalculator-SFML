@@ -101,7 +101,6 @@ public:
     float topMostGridPixelValue();
     
 private:
-    // 跟画图有关
     // Graphing related
     vector<sf::Vector2f> coordinates[6];    // Stores up to six sets of coordinates.
                                             // This can save CPU usage by avoiding unnecessary calculation.
