@@ -319,11 +319,17 @@ double width;               // width of the middle rectangle.
 UILabel title;              // Button title.
 ``` 
 ### Important Functions
-```C++
-void UIButton::setTextPositionToMiddle();
-```
-Calculate text boundary length and set button to the right position in order to align to center.
 
+```C++
+void textAlignToLeft();
+void textAlignToCenter();
+```
+Calculate text boundary length and set button to the right position in order to align to left/center.
+
+```C++
+void autoSetColor();
+```
+Call to this function automatically updates the UIButton object background color regarding its type and state.
 </br>
 
 ## UILabel
@@ -353,6 +359,8 @@ bool _isEnabled;    // is label enabled?
 - [x] X and Y axis.
 - [x] Buttons and Tabs Mouse Hovering color change.
 - [x] Buttons pressed state added.
+- [ ] Logarithm,
+- [ ] Max/Min binary functions.
 - [ ] Line color customization
 - [ ] Grid line numbers
 
