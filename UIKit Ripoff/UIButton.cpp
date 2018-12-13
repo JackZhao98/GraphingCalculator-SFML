@@ -33,10 +33,12 @@ UIButton::UIButton() {
     textAlignToCenter();
 }
 
+// Modifier.
 void UIButton::setType(TYPE _type) {
     type = _type;
     autoSetColor();
 }
+
 void UIButton::setState(STATE _state) {
     state = _state;
     autoSetColor();
@@ -58,42 +60,18 @@ void UIButton::setCornerRadius(double _radius) {
     applyButtonPosition();
 }
 
-void UIButton::setTitleOffset(double offestY) {
-    title.setPosition(title.getPosition() + sf::Vector2f(0, offestY));
-}
-
-void UIButton::setTitleSize(unsigned int size) {
-    title.setCharacterSize(size);
-}
-
 void UIButton::setPosition(const sf::Vector2f& _position) {
     left.setPosition(_position);
     applyButtonPosition();
     textAlignToCenter();
 }
 
-void UIButton::applyButtonPosition() {
-    sf::Vector2f left_position = left.getPosition();
-    left.setRadius(radius);
-    mid.setPosition(left_position.x + radius, left_position.y);
-    mid.setSize(sf::Vector2f(width, 2 * radius));
-    right.setPosition(left_position.x + width, left_position.y);
-    right.setRadius(radius);
+void UIButton::setTitleSize(unsigned int size) {
+    title.setCharacterSize(size);
 }
 
-void UIButton::textAlignToLeft() {
-    double textHeight = title.getBoundary().height;
-    sf::Vector2f startPoint = mid.getPosition();
-    title.setPosition(startPoint + sf::Vector2f(0,startPoint.y + radius - textHeight));
-    
-}
-
-// Align text to the center of the box.
-void UIButton::textAlignToCenter() {
-    double textLength = title.getBoundary().width;
-    double textHeight = title.getBoundary().height;
-    sf::Vector2f midPoint = mid.getPosition() + sf::Vector2f(0.5 * mid.getGlobalBounds().width, 0.5 * mid.getGlobalBounds().height);
-    title.setPosition(midPoint - sf::Vector2f(0.5 * textLength, textHeight));
+void UIButton::setTitleOffset(double offestY) {
+    title.setPosition(title.getPosition() + sf::Vector2f(0, offestY));
 }
 
 void UIButton::setTitle(const std::string& _title) {
@@ -115,12 +93,27 @@ bool UIButton::contains(const sf::Vector2f& mouseCursor) {
     return (left.getGlobalBounds().contains(mouseCursor) || mid.getGlobalBounds().contains(mouseCursor) ||right.getGlobalBounds().contains(mouseCursor));
 }
 
-double UIButton::getLength () const {
-    return (right.getPosition().x + 2 * radius - left.getPosition().x);
+void UIButton::applyButtonPosition() {
+    sf::Vector2f left_position = left.getPosition();
+    left.setRadius(radius);
+    mid.setPosition(left_position.x + radius, left_position.y);
+    mid.setSize(sf::Vector2f(width, 2 * radius));
+    right.setPosition(left_position.x + width, left_position.y);
+    right.setRadius(radius);
 }
 
-double UIButton::getHeight() const {
-    return 2 * radius;
+void UIButton::textAlignToLeft() {
+    double textHeight = title.getBoundary().height;
+    sf::Vector2f startPoint = mid.getPosition();
+    title.setPosition(startPoint + sf::Vector2f(0,startPoint.y + radius - textHeight));
+    
+}
+
+void UIButton::textAlignToCenter() {
+    double textLength = title.getBoundary().width;
+    double textHeight = title.getBoundary().height;
+    sf::Vector2f midPoint = mid.getPosition() + sf::Vector2f(0.5 * mid.getGlobalBounds().width, 0.5 * mid.getGlobalBounds().height);
+    title.setPosition(midPoint - sf::Vector2f(0.5 * textLength, textHeight));
 }
 
 // Automatic change button color based on current state and type.
@@ -205,6 +198,14 @@ void UIButton::autoSetColor() {
         default:
             break;
     }
+}
+
+double UIButton::getLength () const {
+    return (right.getPosition().x + 2 * radius - left.getPosition().x);
+}
+
+double UIButton::getHeight() const {
+    return 2 * radius;
 }
 
 void UIButton::placeButton(sf::RenderWindow& window) {
