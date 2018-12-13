@@ -750,6 +750,8 @@ void Graph::zoomOut(sf::Vector2i instantMousePos) {
 bool Graph::trigNeedToMultiply (char c) {
     return !(c == '+'||c == '-'||c == '*'||c == '/'||c == '(');
 }
+
+
 float Graph::leftMostGridPixelValue() {
     float pixelPerStep = xStep / xValuePerPixel;
     float x = origin.x; // 原点的坐标值

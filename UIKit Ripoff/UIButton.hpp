@@ -12,6 +12,7 @@
 #include "UILabel.hpp"
 #include "SFML/Graphics.hpp"
 
+// Button states.
 enum STATE {
     DEFAULT,
     HIGHLIGHTED,
@@ -19,6 +20,7 @@ enum STATE {
     SELECTED
 };
 
+// Button Type
 enum TYPE {
     NA,
     NUMBER,
@@ -31,9 +33,9 @@ enum TYPE {
 class UIButton {
 private:
     // Button Shape + Color
-    sf::CircleShape left;
-    sf::CircleShape right;
-    sf::RectangleShape mid;
+    sf::CircleShape left;       // Circle shape on the left
+    sf::CircleShape right;      // Circle shape on the right
+    sf::RectangleShape mid;     // Rectangle shape in the middle
     sf::Color Default;
     sf::Color Highlighted;
     sf::Color Selected;
@@ -45,25 +47,28 @@ private:
     TYPE type;
     
 public:
+    //CTORS
     UIButton();
     
-    void setType(TYPE _type);
-    void setState(STATE _state);
-    void setLength(double _length);
-    void setHeight(double _width);
-    void setRadius(double _radius);
-    void setPosition(const sf::Vector2f& _position);
-    void setTitle(const std::string& _title);
-    void setTitleSize(unsigned int size);
-    void setTitleOffset(double offestY);
-    void setBackGroundColor(const sf::Color& color);
-    void setTitleFillColor(const sf::Color& color);
-    bool contains(const sf::Vector2f& mouseCursor);
-    void setTextPositionToLeft();
-    void textAlignToCenter();
-    void applyButtonPosition();
-    void autoSetColor();
+    // Modifier.
+    void setType(TYPE _type);                //  Setup button type.
+    void setState(STATE _state);             //  Setup button state.
+    void setLength(double _length);          //  Setup button length.
+    void setHeight(double _width);           //  Setup button height.
+    void setCornerRadius(double _radius);    //  Setup button corner radius.
+    void setPosition(const sf::Vector2f& _position); // Setup button position.
+    void setTitle(const std::string& _title);        // Setup button title.
+    void setTitleSize(unsigned int size);            // Setup button title character size.
+    void setTitleOffset(double offestY);             // Setup title offset vertically
+    void setBackGroundColor(const sf::Color& color); // Setup Button background
+    void setTitleFillColor(const sf::Color& color);  // Setup title text color.
+    bool contains(const sf::Vector2f& mouseCursor);  // Boolean if the button shape contains a point.
+    void textAlignToLeft();             // Set text position alignment to left.
+    void textAlignToCenter();           // Set text alignment to middle
+    void applyButtonPosition();         // Apply button position settings.
+    void autoSetColor();                // Automatic setup color based on types and states.
     
+    // Accessors
     double getLength () const;
     double getHeight() const;
     STATE getState() const {
@@ -72,16 +77,9 @@ public:
     std::string getTitle() const {
         return title.getString();
     }
-    void placeButton(sf::RenderWindow& window) {
-        window.draw(left);
-        window.draw(right);
-        window.draw(mid);
-        title.drawLabel(window);
-    }
+    void placeButton(sf::RenderWindow& window);
     double getRadius()const {return radius;}
-    sf::Vector2f origin() const {
-        return left.getPosition();
-    }
+    sf::Vector2f origin() const;
     
 };
 #endif /* UIButton_hpp */

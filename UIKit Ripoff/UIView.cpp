@@ -14,17 +14,6 @@ UIView::UIView(CGRect frame): frame(frame) {
     _View.setSize(sf::Vector2f(frame.width(), frame.height()));
 }
 
-void UIView::pointAutoLayout(const CGVector& offset, const CGPoint& reference, CGPoint& objectOrigin) {
-    objectOrigin.x = reference.x + offset.dx;
-    objectOrigin.y = reference.y + offset.dy;
-}
-
-// One rect inside another.
-void UIView::sizeAutoLayout(const CGVector& offset, const CGRect& reference, CGRect& objectSize) {
-    objectSize.size.width = reference.width() - objectSize.origin.x - offset.dx;
-    objectSize.size.height = reference.height() - objectSize.origin.y - offset.dy;
-}
-
 void UIView::setPosition(const CGPoint& origin) {
     frame.setOrigin(origin);
     _View.setPosition(frame.origin.x, frame.origin.y);

@@ -21,6 +21,7 @@ istream& operator >> (istream& ins, expression& e) {
     return ins;
 }
 
+// Convert string into tokens
 void expression::convert (string input) {
     int prev = 0;
     steck<string> op;
@@ -31,6 +32,7 @@ void expression::convert (string input) {
     while (input[input.length() - 1] == ' ')
         input.pop_back();
     
+    // Using stringstream to input.
     stringstream ss(input);
     string temp;
     while (__token.size() > 0) {
@@ -39,6 +41,7 @@ void expression::convert (string input) {
     }
     while (!ss.eof()) {
         ss >> temp;
+        // Peek at next char if it is a number.
         if (peek(temp))
             __token.push(new oprand(stod(temp)));
         else {
@@ -79,6 +82,7 @@ void expression::convert (string input) {
             }
         }
     }
+    // Push the rest of the operators into the tokens.
     while (!op.empty()) (op.top() != "(")? __token.push(new optr(op.pop())):void(op.pop());
 }
 
@@ -127,6 +131,7 @@ double expression::eval(double _x_value) {
             }
             double rhs = result.pop();
             
+            // Return error code if unexpected empty queue is found.
             if (result.empty()) {
                 _error = 1;
                 return 0;
@@ -149,7 +154,7 @@ bool expression::peek(string& s)const {
     return (isdigit(s[0]));
 }
 
-
+// Operator priority check.
 int expression::priority(string OPERATOR) {
     if (OPERATOR == "+" || OPERATOR == "-")
         return 1;

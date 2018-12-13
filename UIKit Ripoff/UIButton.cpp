@@ -52,7 +52,7 @@ void UIButton::setHeight(double height) {
     applyButtonPosition();
 }
 
-void UIButton::setRadius(double _radius) {
+void UIButton::setCornerRadius(double _radius) {
     radius = _radius;
     left.setRadius(radius);
     applyButtonPosition();
@@ -81,16 +81,15 @@ void UIButton::applyButtonPosition() {
     right.setRadius(radius);
 }
 
-void UIButton::setTextPositionToLeft() {
-//    double textLength = title.getBoundary().width;
+void UIButton::textAlignToLeft() {
     double textHeight = title.getBoundary().height;
     sf::Vector2f startPoint = mid.getPosition();
     title.setPosition(startPoint + sf::Vector2f(0,startPoint.y + radius - textHeight));
     
 }
 
+// Align text to the center of the box.
 void UIButton::textAlignToCenter() {
-
     double textLength = title.getBoundary().width;
     double textHeight = title.getBoundary().height;
     sf::Vector2f midPoint = mid.getPosition() + sf::Vector2f(0.5 * mid.getGlobalBounds().width, 0.5 * mid.getGlobalBounds().height);
@@ -124,6 +123,7 @@ double UIButton::getHeight() const {
     return 2 * radius;
 }
 
+// Automatic change button color based on current state and type.
 void UIButton::autoSetColor() {
     switch (state) {
         case DEFAULT:
@@ -207,3 +207,13 @@ void UIButton::autoSetColor() {
     }
 }
 
+void UIButton::placeButton(sf::RenderWindow& window) {
+    window.draw(left);
+    window.draw(right);
+    window.draw(mid);
+    title.drawLabel(window);
+}
+
+sf::Vector2f UIButton::origin() const {
+    return left.getPosition();
+}
