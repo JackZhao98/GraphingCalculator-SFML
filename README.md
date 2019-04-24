@@ -1,4 +1,4 @@
-#  Graphic Calculator
+#  Graphing Calculator
 
 ## Project Overview
 
